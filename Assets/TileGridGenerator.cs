@@ -24,7 +24,7 @@ public class TileGridGenerator : MonoBehaviour
         {
             for (int y = 0; y < gridHeight; y++)
             {
-               int tileIndex = Random.Range(0, tilePrefabs.Length);
+                int tileIndex = Random.Range(0, tilePrefabs.Length);
                 Vector3 spawnPosition = new Vector3(x * tileSpacing - widthOffset, 0, y * tileSpacing - heightOffset);
                 GameObject tilePrefab = tilePrefabs[tileIndex];
                 Instantiate(tilePrefab, spawnPosition, Quaternion.identity, transform);
