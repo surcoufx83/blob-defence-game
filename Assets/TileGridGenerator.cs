@@ -1,3 +1,4 @@
+using Unity.Collections;
 using UnityEngine;
 
 public class TileGridGenerator : MonoBehaviour
@@ -7,7 +8,8 @@ public class TileGridGenerator : MonoBehaviour
     public int gridWidth = 1;
     [Range(10, 1000)]
     public int gridHeight = 1;
-    private float tileSpacing = 1f;
+    [ReadOnly]
+    public float tileSpacing = 1f;
 
     void Start()
     {
