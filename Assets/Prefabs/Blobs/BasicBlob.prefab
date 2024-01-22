@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -8235086972356453316}
   - component: {fileID: 2494131475337561620}
   - component: {fileID: -3608437960195098645}
+  - component: {fileID: -7710945532688695127}
   m_Layer: 0
   m_Name: BasicBlob
   m_TagString: Untagged
@@ -207,3 +208,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnableOutline: 1
+--- !u!114 &-7710945532688695127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6295066596671602589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db9706c422b14c942aa1503d070027a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
+  showEntityInfoOnClick: 1
