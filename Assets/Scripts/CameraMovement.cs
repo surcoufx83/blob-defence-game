@@ -2,9 +2,28 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+
+    [Range(0f, 20f)]
     public float moveSpeed = 5.0f;
+
+    [Range(0f, 1000f)]
     public float rotateSpeed = 200.0f;
-    private float minY = .5f;
+
+    [Range(0f, 100f)]
+    public float minCameraHeight = .5f;
+
+    [Range(0f, 100f)]
+    public float maxCameraHeight = 25f;
+
+    void Start()
+    {
+        if (minCameraHeight > maxCameraHeight)
+        {
+            float temp = minCameraHeight;
+            minCameraHeight = maxCameraHeight;
+            maxCameraHeight = temp;
+        }
+    }
 
     void Update()
     {
@@ -66,7 +85,7 @@ public class CameraMovement : MonoBehaviour
     void ChangeCameraHeight(float yChange)
     {
         Vector3 position = transform.position;
-        position.y = Mathf.Max(minY, position.y + yChange);
+        position.y = Mathf.Max(minCameraHeight, position.y + yChange);
         transform.position = position;
     }
 }
