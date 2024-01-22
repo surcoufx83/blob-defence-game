@@ -15,6 +15,8 @@ public class SpawnController : MonoBehaviour
     public GameObject stoneThrowerBlob;
     public GameObject wizardBlob;
 
+    private int entityCounter = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,9 @@ public class SpawnController : MonoBehaviour
                 {
                     Vector3 spawnPosition = baseSpawnPosition + new Vector3(Random.Range(-i * 0.2f, i * 0.2f), 0.2f, Random.Range(-i * 0.2f, i * 0.2f)); // Adjust to prevent overlapping
                     GameObject blob = Instantiate(blobPrefab, spawnPosition, Quaternion.identity, surface.transform);
+                    blob.name = $"Blob_{entityCounter}_{blob.GetComponent<BlobProperties>().type}";
+                    entityCounter++;
+                    blob.GetComponent<EntityInteraction>().gameController = gameController;
                     NavMeshAgent agent = blob.GetComponent<NavMeshAgent>();
                     if (agent != null && gameController.PlayerChest != null)
                     {

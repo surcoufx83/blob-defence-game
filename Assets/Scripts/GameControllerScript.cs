@@ -9,6 +9,10 @@ public class GameControllerScript: MonoBehaviour
 
     public Text gameStateMessagesText;
 
+    public EntityUiController entityUiController;
+    public delegate void EntitySelectedHandler(object sender, EntitySelectedEventArgs args);
+    public event EntitySelectedHandler EntitySelected;
+
     [Range(0f, 9999f)]
     public float TimeBeforeGameStarts = 10.0f;
 
@@ -19,6 +23,11 @@ public class GameControllerScript: MonoBehaviour
 
     [Range(1, 20)]
     public int spawnInterval = 5;
+
+    public void SelectEntity(GameObject entity)
+    {
+        EntitySelected?.Invoke(this, new EntitySelectedEventArgs(entity));
+    }
 
     void Start()
     {
@@ -52,6 +61,25 @@ public class GameControllerScript: MonoBehaviour
         int seconds = (int)timer % 60;
         string formattedTime = string.Format("{0:0}:{1:00}", minutes, seconds);
         gameStateMessagesText.text = countdown ? "Starting in: " + formattedTime : formattedTime;
+    }
+
+}
+
+public class EntitySelectedEventArgs
+{
+
+    public bool IsSelected;
+    public GameObject SelectedEntity;
+
+    public EntitySelectedEventArgs()
+    {
+        IsSelected = false;
+    }
+
+    public EntitySelectedEventArgs(GameObject selectedEntity)
+    {
+        SelectedEntity = selectedEntity;
+        IsSelected = true;
     }
 
 }
